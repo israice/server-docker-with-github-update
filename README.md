@@ -30,12 +30,16 @@ docker compose up --build
 
 При каждом push файлы в контейнере автоматически синхронизируются с GitHub.
 
+docker compose up -d
+docker logs flask-github-updater -f
 
 git add .
-git commit -m "v0.0.3 - added WEBHOOK_SECRET"
+git commit -m "v0.0.4 - auto update test 1"
 git push
 
 
 v0.0.1 - Server auto update example 02.02.2026
 v0.0.2 - port fixed
 v0.0.3 - added WEBHOOK_SECRET
+v0.0.4 - auto update test 1
+
