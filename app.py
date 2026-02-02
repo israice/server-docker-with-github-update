@@ -31,7 +31,7 @@ def webhook():
 
     if request.headers.get("X-GitHub-Event") == "push":
         subprocess.run(["git", "fetch", "origin"], cwd="/app")
-        subprocess.run(["git", "reset", "--hard", "origin/main"], cwd="/app")
+        subprocess.run(["git", "reset", "--hard", "origin/master"], cwd="/app")
         return "Updated", 200
     return "OK", 200
 

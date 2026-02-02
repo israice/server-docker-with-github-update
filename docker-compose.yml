@@ -10,7 +10,7 @@ services:
       - FLASK_ENV=development
       - REPO_URL=${REPO_URL}
       - WEBHOOK_SECRET=${WEBHOOK_SECRET}
-    entrypoint: ["/bin/sh", "-c", "if [ -z \"$REPO_URL\" ]; then echo 'ERROR: REPO_URL is not set. Create .env file with REPO_URL=https://github.com/username/repo.git' && exit 1; fi && if [ -d /app/.git ]; then cd /app && git fetch origin && git reset --hard origin/main; else rm -rf /app/* /app/.[!.]* 2>/dev/null; git clone $REPO_URL /app; fi && cd /app && pip install -r requirements.txt 2>/dev/null; python app.py"]
+    entrypoint: ["/bin/sh", "-c", "if [ -z \"$REPO_URL\" ]; then echo 'ERROR: REPO_URL is not set. Create .env file with REPO_URL=https://github.com/username/repo.git' && exit 1; fi && if [ -d /app/.git ]; then cd /app && git fetch origin && git reset --hard origin/master; else rm -rf /app/* /app/.[!.]* 2>/dev/null; git clone $REPO_URL /app; fi && cd /app && pip install -r requirements.txt 2>/dev/null; python app.py"]
 
 volumes:
   app_data:
