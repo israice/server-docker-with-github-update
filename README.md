@@ -1,17 +1,20 @@
-# Flask Server with GitHub Auto-Update
+﻿# Flask Server with GitHub Auto-Update
 
 Flask сервер в Docker с автоматическим обновлением через GitHub webhooks.
 
 ## Запуск
 
 1. Создай `.env` файл:
-```
+
+```env
 REPO_URL=https://github.com/username/repo.git
 WEBHOOK_SECRET=your-secret-key-here
 PORT=5009
+BRANCH=main
 ```
 
 2. Запусти контейнер:
+
 ```bash
 docker compose up --build
 ```
@@ -28,18 +31,24 @@ docker compose up --build
 4. Secret: тот же ключ что в `.env` (`WEBHOOK_SECRET`)
 5. Events: Just the push event
 
-При каждом push файлы в контейнере автоматически синхронизируются с GitHub.
+При каждом push в ветку `BRANCH` файлы в контейнере автоматически синхронизируются с GitHub. Если ветка не совпадает, webhook будет проигнорирован.
 
+## Полезные команды
+
+```bash
 docker compose up -d
 docker logs flask-github-updater -f
 
 git add .
-git commit -m "v0.0.4 - auto update test 6"
+git commit -m "v0.0.5 - approvments by codex"
 git push
 
+```
 
-v0.0.1 - Server auto update example 02.02.2026
-v0.0.2 - port fixed
-v0.0.3 - added WEBHOOK_SECRET
-v0.0.4 - auto update test 1
+## История версий
 
+- v0.0.1 - Server auto update example 02.02.2026
+- v0.0.2 - port fixed
+- v0.0.3 - added WEBHOOK_SECRET
+- v0.0.4 - auto update test 1
+- v0.0.5 - approvments by codex
