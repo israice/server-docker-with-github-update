@@ -1,6 +1,7 @@
 services:
   web:
     container_name: flask-github-updater
+    restart: unless-stopped
     build: .
     ports:
       - "${PORT}:5000"

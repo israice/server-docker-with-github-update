@@ -6,6 +6,7 @@ import subprocess
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 WEBHOOK_SECRET = os.environ.get("WEBHOOK_SECRET", "")
 
 
@@ -32,7 +33,7 @@ def webhook():
     if request.headers.get("X-GitHub-Event") == "push":
         subprocess.run(["git", "fetch", "origin"], cwd="/app")
         subprocess.run(["git", "reset", "--hard", "origin/master"], cwd="/app")
-        return "Updated", 200
+        os._exit(0)  # Exit to restart container with new code
     return "OK", 200
 
 
