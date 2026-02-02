@@ -40,7 +40,7 @@ docker compose up -d
 docker logs flask-github-updater -f
 
 git add .
-git commit -m "v0.0.4 - auto update test 7"
+git commit -m "v0.0.4 - auto update test 9"
 git push
 
 ```
