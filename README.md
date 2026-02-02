@@ -10,7 +10,7 @@ Flask сервер в Docker с автоматическим обновлени�
 REPO_URL=https://github.com/username/repo.git
 WEBHOOK_SECRET=your-secret-key-here
 PORT=5009
-BRANCH=main
+BRANCH=master
 ```
 
 2. Запусти контейнер:
@@ -40,7 +40,7 @@ docker compose up -d
 docker logs flask-github-updater -f
 
 git add .
-git commit -m "v0.0.5 - approvments by codex test 2"
+git commit -m "v0.0.4 - auto update test 7"
 git push
 
 ```
@@ -51,4 +51,3 @@ git push
 - v0.0.2 - port fixed
 - v0.0.3 - added WEBHOOK_SECRET
 - v0.0.4 - auto update test 1
-- v0.0.5 - approvments by codex

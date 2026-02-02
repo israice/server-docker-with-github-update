@@ -8,7 +8,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 WEBHOOK_SECRET = os.environ.get("WEBHOOK_SECRET", "")
-BRANCH = os.environ.get("BRANCH", "main")
+BRANCH = os.environ.get("BRANCH", "master")
 
 
 def verify_signature(payload, signature):
