@@ -40,7 +40,7 @@ docker compose up -d
 docker logs flask-github-updater -f
 
 git add .
-git commit -m "v0.0.5 - approvments by codex"
+git commit -m "v0.0.5 - approvments by codex test 1"
 git push
 
 ```
