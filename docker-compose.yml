@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - app_data:/app
+    environment:
+      - FLASK_ENV=development
+      - REPO_URL=${REPO_URL}
+    entrypoint: ["/bin/sh", "-c", "git clone $REPO_URL /app || (cd /app && git fetch origin && git reset --hard origin/main) && python app.py"]
+
+volumes:
+  app_data:
