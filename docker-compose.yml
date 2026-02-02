@@ -3,12 +3,13 @@ services:
     container_name: flask-github-updater
     build: .
     ports:
-      - "5009:5000"
+      - "${PORT}:5000"
     volumes:
       - app_data:/app
     environment:
       - FLASK_ENV=development
       - REPO_URL=${REPO_URL}
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET}
     entrypoint: ["/bin/sh", "-c", "if [ -z \"$REPO_URL\" ]; then echo 'ERROR: REPO_URL is not set. Create .env file with REPO_URL=https://github.com/username/repo.git' && exit 1; fi && git clone $REPO_URL /app || (cd /app && git fetch origin && git reset --hard origin/main) && python app.py"]
 
 volumes:
